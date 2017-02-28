@@ -14,10 +14,15 @@ app.get('/', function(req, res) {
 app.get('/events', function(req, res) {
     res.json(gestionEvents.getListeEvenements());
 });
-app.post('/creerEvenement/:id', function(req, res) {
-    gestionEvents.creerEvenement(req.params.id);
+app.get('/event/:id', function(req, res) {
+    res.json(gestionEvents.getEvenementById(req.params.id));
+});
 
-    res.json(gestionEvents.creerEvenements(req.params.id, req.params.nom, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux)); //id, nom, description, dateDebut, lieu, createur, creneaux
+app.post('/creerEvenement/:id', function(req, res) {
+    var event = gestionEvents.creer(req.params.id);
+    res.json(event);
+
+    //res.json(gestionEvents.creerEvenements(req.params.id, req.params.nom, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux)); //id, nom, description, dateDebut, lieu, createur, creneaux
 });
 
 app.listen(3000, function() {
