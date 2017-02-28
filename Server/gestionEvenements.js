@@ -36,6 +36,9 @@ var positionDeLEvenement = function(id) {
         return {};
     return listeEvents[id].position;
 };
+var getListeEvenements = function() {
+    return listeEvents;
+};
 
 exports.creerEvenements;
 exports.positionDeLEvenement;
