@@ -18,13 +18,11 @@ app.get('/event/:id', function(req, res) {
     res.json(gestionEvents.getEvenementById(req.params.id));
 });
 
-app.post('/creerEvenement/:id', function(req, res) {
-    var event = gestionEvents.creer(req.params.id);
+app.post('/creerEvenement/:id/:nom', function(req, res) {
+    var event = gestionEvents.creer(req.params.id, req.params.nom /*, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux*/ );
     res.json(event);
-
-    //res.json(gestionEvents.creerEvenements(req.params.id, req.params.nom, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux)); //id, nom, description, dateDebut, lieu, createur, creneaux
 });
 
 app.listen(3000, function() {
-    console.log('Example app listening on port 3000!');
+    console.log('Node Events app listening on port 3000!');
 });
