@@ -3,27 +3,30 @@
 	<head>
 		<meta charset="utf-8">
 		<title>DodleMe</title>
-		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 		<script src="./bower_components/angular/angular.js"></script>
 		<script src="./bower_components/angular-resource/angular-resource.js"></script>
 		<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="./bower_components/jquery/dist/jquery.js"></script>
 		<script src="./app.js"></script>
-	</head>
-	<body ng-app="dodleme">
-	<div>
-	<h1 class="text-center">DodleMe</h1>
-			<input type="button" class="btn btn-info col-xs-12 col-sm-12 col-md-6 col-lg-3" ui-sref="creer" value="Créer">
-			<input type="button" class="btn btn-info col-xs-12 col-sm-12 col-md-6 col-lg-3" ui-sref="liste" value="Liste">
-	  	</div>
-	  	<br>
-	  	<br>
-	  	<div>
-	  	<ui-view></ui-view>	
-	  	</div>
-	  	<br>
-	  	<div>
-	  		Footer
-	  	</div>
-	</body>
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" media="screen"
+			href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css"/>
+		</head>
+		<body ng-app="dodleme">
+			<div>
+				<h1 class="text-center">DodleMe</h1>
+				<input type="button" class="btn btn-info col-xs-12 col-sm-12 col-md-6 col-lg-3" ui-sref="creer" value="Créer">
+				<input type="button" class="btn btn-info col-xs-12 col-sm-12 col-md-6 col-lg-3" ui-sref="liste" value="Liste">
+			</div>
+			<br>
+			<br>
+			<div>
+				<ui-view></ui-view>
+			</div>
+			<br>
+			<div>
+				Footer
+			</div>
+		</body>
 	</html>

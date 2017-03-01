@@ -15,3 +15,4 @@ app.config(function($stateProvider) {
   $stateProvider.state(helloState);
   $stateProvider.state(aboutState);
 });
+
