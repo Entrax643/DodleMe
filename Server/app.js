@@ -19,9 +19,8 @@ app.get('/event/:id', function(req, res) {
 });
 
 app.post('/creerEvent/', function(req, res) {
-    console.log(req.body);
-    //var event = gestionEvents.creer(req.params.id, req.params.nom, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux);
-    //res.json(event);
+    var event = gestionEvents.creer(req.body.id, req.body.nom, req.body.description, req.body.dateDebut, req.body.lieu, req.body.createur, req.body.creneaux);
+    res.json(event);
 });
 
 app.listen(3000, function() {
