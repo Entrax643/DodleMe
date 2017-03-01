@@ -8,6 +8,9 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+app.use(express.static('../Front'));
+app.use('/bower_components', express.static('../Front/bower_components'));
+
 app.get('/', function(req, res) {
     res.send('Hello World!');
 });
