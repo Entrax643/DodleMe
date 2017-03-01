@@ -14,8 +14,8 @@ function Evenement(id, nom, description, dateDebut, lieu, createur, creneaux) {
     this.creneaux = creneaux;
 }
 
-var creer = function(id, nom /*, description, dateDebut, lieu, createur, creneaux*/ ) {
-    listeEvents[id] = new Evenement(id, nom /*, description, dateDebut, lieu, createur, creneaux*/ );
+var creer = function(id, nom, description, dateDebut, lieu, createur, creneaux) {
+    listeEvents[id] = new Evenement(id, nom, description, dateDebut, lieu, createur, creneaux);
     return listeEvents[id];
 }
 var getListeEvenements = function() {

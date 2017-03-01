@@ -18,9 +18,10 @@ app.get('/event/:id', function(req, res) {
     res.json(gestionEvents.getEvenementById(req.params.id));
 });
 
-app.post('/creerEvenement/:id/:nom', function(req, res) {
-    var event = gestionEvents.creer(req.params.id, req.params.nom /*, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux*/ );
-    res.json(event);
+app.post('/creerEvent/', function(req, res) {
+    console.log(req.body);
+    //var event = gestionEvents.creer(req.params.id, req.params.nom, req.params.description, req.params.dateDebut, req.params.lieu, req.params.createur, req.params.creneaux);
+    //res.json(event);
 });
 
 app.listen(3000, function() {
