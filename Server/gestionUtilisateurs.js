@@ -6,8 +6,11 @@ function Utilisateur(id, pseudo) {
 }
 
 var creer = function (id, pseudo) {
-    listeUtilisateurs[id] = new Utilisateur(id, pseudo);
-    return listeUtilisateurs[id];
+    if (typeof listeUtilisateurs[id] === 'undefined') {
+        listeUtilisateurs[id] = new Utilisateur(id, pseudo);
+        return listeUtilisateurs[id];
+    }
+    return 0;
 };
 
 var getListeUtilisateurs = function () {
