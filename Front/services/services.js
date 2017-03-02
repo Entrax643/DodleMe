@@ -11,7 +11,7 @@ app.factory('Services', function ($http) {
 
   //Utilisateurs
   function creerUser(user) {
-    return $http.post(this.path + 'creerUtilisateurJSON', user).then(handleSuccess, handleError('Erreur lors de la création de l\'utilisateur'));
+    return $http.post(this.path + 'creerUtilisateur', user).then(handleSuccess, handleError('Erreur lors de la création de l\'utilisateur'));
   }
 
   function getUser(id) {
