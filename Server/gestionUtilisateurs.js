@@ -1,14 +1,18 @@
 var listeUtilisateurs = {};
-
-function Utilisateur(id, pseudo) {
+var id = 0;
+function Utilisateur(id, pseudo, password, nom, prenom) {
     this.id = id;
     this.pseudo = pseudo;
+    this.password = password;
+    this.nom = nom;
+    this.prenom = prenom;
 }
 
-var creer = function (id, pseudo) {
+var creer = function (pseudo, password, nom, prenom) {
     if (typeof listeUtilisateurs[id] === 'undefined') {
-        listeUtilisateurs[id] = new Utilisateur(id, pseudo);
-        return listeUtilisateurs[id];
+        listeUtilisateurs[id] = new Utilisateur(id, pseudo, password, nom, prenom);
+        id++;
+        return listeUtilisateurs[id-1];
     }
     return 0;
 };

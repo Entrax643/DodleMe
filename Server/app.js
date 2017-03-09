@@ -37,8 +37,8 @@ app.get('/utilisateur/:id', function (req, res) {
     res.json(gestionUtilisateurs.getUtilisateurById(req.params.id));
 });
 app.post('/creerUtilisateur/', function (req, res) {
-    console.log('creerUtilisateur' + " ID : " + req.body.id + " Pseudo : " + req.body.pseudo);
-    var user = gestionUtilisateurs.creer(req.body.id, req.body.pseudo);
+    console.log('creerUtilisateur' + "\n ID : " + req.body.id + "\n Pseudo : " + req.body.pseudo + "\n Mot de passe : " + req.body.password + "\n Nom : " + req.body.nom + "\n Prenom : " + req.body.prenom);
+    var user = gestionUtilisateurs.creer(req.body.pseudo, req.body.password, req.body.nom, req.body.prenom);
     res.json(user);
 });
 

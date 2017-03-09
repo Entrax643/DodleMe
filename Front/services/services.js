@@ -15,7 +15,7 @@ app.factory('Services', function ($http) {
   }
 
   function getUser(id) {
-    return $http.get(this.path + 'creerUtilisateur/' + id).then(handleSuccess, handleError('Erreur lors de la récupération de l\'utilisateur'));
+    return $http.get(this.path + 'utilisateur/' + id).then(handleSuccess, handleError('Erreur lors de la récupération de l\'utilisateur'));
   }
 
   function getAllUsers() {
