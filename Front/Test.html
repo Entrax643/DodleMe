@@ -1,13 +1,6 @@
 <!doctype html>
 <html lang="FR-fr" ng-app="mdDatetimePickerDemo">
 	<head>
-		<meta charset="utf-8">
-		<title>DodleMe</title>
-		<!-- <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" /> -->
-		<script src="./bower_components/angular/angular.js"></script>
-		<script src="./bower_components/angular-resource/angular-resource.js"></script>
-		<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-		<script src="./app.js"></script>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
@@ -23,20 +16,13 @@
 		<script type="text/javascript" src="./jsdatepicker/angular-material-datetimepicker.js"></script>
 		<script type="text/javascript" src="./jsdatepicker/demo.js"></script>
 	</head>
-	<body ng-app="dodleme">
-		<div>
-			<h1 class="text-center">DodleMe</h1>
-			<input type="button" class="btn btn-info col-xs-12 col-sm-12 col-md-6 col-lg-3" ui-sref="creer" value="Créer">
-			<input type="button" class="btn btn-info col-xs-12 col-sm-12 col-md-6 col-lg-3" ui-sref="liste" value="Liste">
-		</div>
-		<br>
-		<br>
-		<div>
-			<ui-view></ui-view>
-		</div>
-		<br>
-		<div>
-			Footer
-		</div>
+	<body ng-controller="DemoCtrl">
+		<label>Date/Time Picker</label>
+		<input mdc-datetime-picker date="true" time="true" type="text" id="datetime"
+		placeholder="Date" show-todays-date
+		min-date="date"
+		ng-model="dateTime">
+		</md-input-container>
+		<div flex-gt-md="grow" ex-source-code target="input"></div>
 	</body>
 </html>
