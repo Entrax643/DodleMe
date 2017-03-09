@@ -17,14 +17,46 @@ app.get('/', function (req, res) {
 });
 
 //Events
-app.get('/events', function (req, res) {
+app.get('/events', function(req, res) {
     res.json(gestionEvents.getListeEvenements());
 });
-app.get('/event/:id', function (req, res) {
+app.get('/event/:id', function(req, res) {
     res.json(gestionEvents.getEvenementById(req.params.id));
 });
-app.post('/creerEvent/', function (req, res) {
+app.post('/event', function(req, res) {
     var event = gestionEvents.creer(req.body.id, req.body.nom, req.body.description, req.body.dateDebut, req.body.lieu, req.body.createur, req.body.creneaux);
+    res.json(event);
+});
+app.post('/ajouterUser/:idUtil/:idEvent/:disponibilite/:heureDebut', function(req, res) {
+    var event = getEvenementById(id);
+    gestionEvents.getCreneauByHeureDebut(req.params.idUtil, req.params.idEvent, req.params.disponibilite, req.params.heureDebut);
+});
+/*
+{
+    "id": "5",
+    "nom": "test",
+    "description": "description du projet",
+    "createur": "user1",
+    "creneaux": [{
+            "dateDebut": "20-05-2017",
+            "dateFin": "22-05-2017",
+            "heureDebut": "15h",
+            "heureFin": "16h",
+            "utilisateurs" : [
+                {"id": "user1", "dispo":"oui"},
+                {"id": "user2", "dispo":"non"}
+            ]
+        },
+        {
+            "heureDebut": "19h",
+            "heureFin": "21h"
+        }
+    ]
+}
+*/
+app.post('/event/ajouterCreneau/:id', function(req, res) {
+    var event = gestionEvents.getEvenementById(req.params.id);
+    event.creneaux.push(req.body.creneaux);
     res.json(event);
 });
 
