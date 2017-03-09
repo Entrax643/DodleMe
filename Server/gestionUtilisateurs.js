@@ -1,61 +1,30 @@
-var listeEvents = {};
-
-function Evenement(id, nom) {
+var listeUtilisateurs = {};
+var id = 0;
+function Utilisateur(id, pseudo, password, nom, prenom) {
     this.id = id;
+    this.pseudo = pseudo;
+    this.password = password;
     this.nom = nom;
+    this.prenom = prenom;
 }
 
-function Evenement(id, nom, description, dateDebut, lieu, createur, creneaux) {
-    this.id = id;
-    this.nom = nom;
-    this.description = description;
-    this.dateDebut = dateDebut;
-    this.createur = createur;
-    this.creneaux = creneaux;
-}
-
-var creer = function(id, nom, description, dateDebut, lieu, createur, creneaux) {
-    if (typeof listeEvents[id] === 'undefined') {
-        listeEvents[id] = new Evenement(id, nom, description, dateDebut, lieu, createur, creneaux);
-        return getEvenementById(id);
+var creer = function (pseudo, password, nom, prenom) {
+    if (typeof listeUtilisateurs[id] === 'undefined') {
+        listeUtilisateurs[id] = new Utilisateur(id, pseudo, password, nom, prenom);
+        id++;
+        return listeUtilisateurs[id-1];
     }
-    return { "erreur": "Existe déjà !" };
-}
+    return 0;
+};
 
-var creerURL = function(id, nom) {
-    if (typeof listeEvents[id] == 'undefined') {
-        listeEvents[id] = new Evenement(id, nom);
-        return getEvenementById(id);
-    }
-    return { "erreur": "Existe déjà!" };
-}
-var getListeEvenements = function() {
-    return listeEvents;
-}
-var getEvenementById = function(id) {
-    return listeEvents[id];
-}
-var getCreneauById = function(id) {
-    return listeEvents[id].creneaux[id];
-}
-var getCreneauByHeureDebut = function(idUtilisateur, idEvent, disponibilite, heureDebut) {
-    listeEvents[id].creneaux.forEach(function(creneau) {
-        if (creneau.heureDebut == heureDebut) {
-            creneau.utilisateurs.push(idUtilisateur, disponibilite);
-        }
-    });
-}
+var getListeUtilisateurs = function () {
+    return listeUtilisateurs;
+};
 
-elements.forEach(function(element) {
-    var attribute = element.getAttribute('data-attr');
-    element.onclick = function() {
-        alert(attribute);
-    };
-});
+var getUtilisateurById = function (id) {
+    return listeUtilisateurs[id];
+};
 
 exports.creer = creer;
-exports.getListeEvenements = getListeEvenements;
-exports.getEvenementById = getEvenementById;
-exports.creerURL = creerURL;
-exports.getCreneauById = getCreneauById;
-exports.getCreneauByHeureDebut = getCreneauByHeureDebut;
+exports.getListeUtilisateurs = getListeUtilisateurs;
+exports.getUtilisateurById = getUtilisateurById;

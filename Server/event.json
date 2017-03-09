@@ -1,17 +1,8 @@
- {
-    "id": "5",
-    "nom": "test",
+{
+    "id": "1",
+    "nom": "test1",
     "description": "description du projet",
+    "dateDebut": "20-05-2017",
     "createur": "user1",
-    "creneaux": [{
-    		"dateDebut": "20-05-2017",
-    		"dateFin": "22-05-2017",
-            "heureDebut": "15h",
-            "heureFin": "16h",
-            "utilisateurs":[
-            	{"id": "user1", "dispo":"non"},
-            	{"id": "user2", "dispo":"oui"}
-            ]   
-        }
-    ]
+    "creneaux": "15h-17h"
 }
