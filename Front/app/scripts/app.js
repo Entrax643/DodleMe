@@ -36,6 +36,11 @@ angular
         controller: 'CreerCtrl',
         controllerAs: 'creer'
       })
+      .when('/inscription', {
+        templateUrl: 'views/inscription.html',
+        controller: 'InspriptionCtrl',
+        controllerAs: 'inscr'
+      })
       .otherwise({
         redirectTo: '/'
       });
