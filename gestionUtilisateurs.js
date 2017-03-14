@@ -1,7 +1,6 @@
 var listeUtilisateurs = {};
-var id = 0;
-function Utilisateur(id, pseudo, password, nom, prenom) {
-    this.id = id;
+
+function Utilisateur(pseudo, password, nom, prenom) {
     this.pseudo = pseudo;
     this.password = password;
     this.nom = nom;
@@ -9,10 +8,9 @@ function Utilisateur(id, pseudo, password, nom, prenom) {
 }
 
 var creer = function (pseudo, password, nom, prenom) {
-    if (typeof listeUtilisateurs[id] === 'undefined') {
-        listeUtilisateurs[id] = new Utilisateur(id, pseudo, password, nom, prenom);
-        id++;
-        return listeUtilisateurs[id-1];
+    var nextID = getNextID();
+    if (typeof listeUtilisateurs[pseudo] === 'undefined') {
+        listeUtilisateurs[pseudo] = new Utilisateur(pseudo, password, nom, prenom);
     }
     return 0;
 };
@@ -21,10 +19,10 @@ var getListeUtilisateurs = function () {
     return listeUtilisateurs;
 };
 
-var getUtilisateurById = function (id) {
-    return listeUtilisateurs[id];
+var getUtilisateurByPseudo = function (id) {
+    return listeUtilisateurs[pseudo];
 };
 
 exports.creer = creer;
 exports.getListeUtilisateurs = getListeUtilisateurs;
-exports.getUtilisateurById = getUtilisateurById;
+exports.getUtilisateurByPseudo = getUtilisateurByPseudo;

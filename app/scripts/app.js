@@ -41,6 +41,11 @@ angular
         controller: 'InscriptionController',
         controllerAs: 'inscr'
       })
+      .when('/connexion', {
+        templateUrl: 'views/connexion.html',
+        controller: 'ConnexionController',
+        controllerAs: 'conne'
+      })
       .otherwise({
         redirectTo: '/'
       });

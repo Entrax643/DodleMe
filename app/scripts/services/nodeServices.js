@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dodleme')
-  .factory('Services', function ($http) {
+  .factory('NodesServices', function ($http) {
 
     // private functions
     function handleSuccess(data) {
@@ -18,7 +18,7 @@ angular.module('dodleme')
       return $http.post(this.path + 'creerUtilisateur', user).then(handleSuccess, handleError('Erreur lors de la création de l\'utilisateur'));
     }
 
-    function getUser(id) {
+    function getUserByID(id) {
       return $http.get(this.path + 'utilisateur/' + id).then(handleSuccess, handleError('Erreur lors de la récupération de l\'utilisateur'));
     }
 
@@ -41,7 +41,7 @@ angular.module('dodleme')
 
     var service = {};
     service.creerUser = creerUser;
-    service.getUser = getUser;
+    service.getUserByID = getUserByID;
     service.getAllUsers = getAllUsers;
     service.creerEvent = creerEvent;
     service.getEvent = getEvent;
