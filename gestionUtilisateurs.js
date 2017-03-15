@@ -8,18 +8,23 @@ function Utilisateur(pseudo, password, nom, prenom) {
 }
 
 var creer = function (pseudo, password, nom, prenom) {
-    var nextID = getNextID();
+    var id = pseudo + "_" + nom + "_" + prenom;
     if (typeof listeUtilisateurs[pseudo] === 'undefined') {
         listeUtilisateurs[pseudo] = new Utilisateur(pseudo, password, nom, prenom);
+        console.log('creerUtilisateur' + "\n Pseudo : " + pseudo + "\n Mot de passe : " + password + "\n Nom : " + nom + "\n Prenom : " + prenom);
+        return true;
     }
-    return 0;
+    return false;
 };
 
 var getListeUtilisateurs = function () {
     return listeUtilisateurs;
 };
 
-var getUtilisateurByPseudo = function (id) {
+var getUtilisateurByPseudo = function (pseudo) {
+    if (typeof listeUtilisateurs[pseudo] === 'undefined') {
+        return false;
+    }
     return listeUtilisateurs[pseudo];
 };
 

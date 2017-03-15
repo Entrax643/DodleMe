@@ -64,12 +64,11 @@ app.post('/event/ajouterCreneau/:id', function(req, res) {
 app.get('/utilisateurs', function (req, res) {
     res.json(gestionUtilisateurs.getListeUtilisateurs());
 });
-app.get('/utilisateur/:id', function (req, res) {
-    console.log('creerUtilisateur' + " ID : " + req.params.id);
-    res.json(gestionUtilisateurs.getUtilisateurById(req.params.id));
+app.get('/utilisateur/:pseudo', function (req, res) {
+    console.log('getUtilisateur' + " \n ID : " + req.params.pseudo);
+    res.json(gestionUtilisateurs.getUtilisateurByPseudo(req.params.pseudo));
 });
 app.post('/creerUtilisateur/', function (req, res) {
-    console.log('creerUtilisateur' + "\n ID : " + req.body.id + "\n Pseudo : " + req.body.pseudo + "\n Mot de passe : " + req.body.password + "\n Nom : " + req.body.nom + "\n Prenom : " + req.body.prenom);
     var user = gestionUtilisateurs.creer(req.body.pseudo, req.body.password, req.body.nom, req.body.prenom);
     res.json(user);
 });

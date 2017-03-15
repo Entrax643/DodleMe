@@ -22,7 +22,6 @@ angular
     'ngMaterialDatePicker',
     'uiGmapgoogle-maps',
     'nemLogging'
-
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -31,20 +30,35 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/creer-event', {
-        templateUrl: 'views/creerevent.html',
-        controller: 'CreerCtrl',
-        controllerAs: 'creer'
+      .when('/tousLesEvenements', {
+        templateUrl: 'views/tousLesEvenements.html',
+        controller: 'TousLesEvenementsCtrl',
+        controllerAs: 'tousLesEvenements'
+      })
+      .when('/mesEvents', {
+        templateUrl: 'views/mesEvents.html',
+        controller: 'MesEventsCtrl',
+        controllerAs: 'mesEvents'
+      })
+      .when('/creerEvent', {
+        templateUrl: 'views/creerEvent.html',
+        controller: 'CreerEventCtrl',
+        controllerAs: 'creerEvent'
       })
       .when('/inscription', {
         templateUrl: 'views/inscription.html',
-        controller: 'InscriptionController',
-        controllerAs: 'inscr'
+        controller: 'InscriptionCtrl',
+        controllerAs: 'inscription'
       })
       .when('/connexion', {
         templateUrl: 'views/connexion.html',
-        controller: 'ConnexionController',
-        controllerAs: 'conne'
+        controller: 'ConnexionCtrl',
+        controllerAs: 'connexion'
+      })
+      .when('/deconnexion', {
+        templateUrl: 'views/deconnexion.html',
+        controller: 'DeconnexionCtrl',
+        controllerAs: 'deconnexion'
       })
       .otherwise({
         redirectTo: '/'

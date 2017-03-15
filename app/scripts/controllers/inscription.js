@@ -1,21 +1,23 @@
 'use strict';
 angular.module('dodleme')
-    .controller('InscriptionController', function ($rootScope, $scope, NodesServices) {
-        $scope.info = "Nada";
+    .controller('InscriptionCtrl', function ($scope, NodesServices) {
         $scope.user = { prenom: 'Guillaume', nom: 'Fines' };
         $scope.register = function register() {
             $scope.dataLoading = true;
             NodesServices.creerUser($scope.user)
                 .then(function (response) {
-                    if (response.data.success) {
-                        $scope.info = "success";
-                        $rootScope.user = $scope.user;
-                        $rootScope.user.id = response.data;
-                        $scope.error = $rootScope.user;
+                    if (response.success) {
+                        if (response.message.data) {
+                            $scope.error = "";
+                            $scope.info = "Inscription réussie, Bienvenue " + $scope.user.pseudo;
+                        } else {
+                            $scope.info = "";
+                            $scope.error = "Le Pseudo " + $scope.user.pseudo + " est déjà utilisé";
+                        }
                         $scope.dataLoading = false;
                     } else {
-                        $scope.info = "error";
-                        $scope.error = "error";
+                        $scope.info = "Erreur lors de l'inscription : \n";
+                        $scope.error = response.message;
                         $scope.dataLoading = false;
                     }
                 });
