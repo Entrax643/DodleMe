@@ -39,20 +39,20 @@ var getCreneauById = function(id) {
     return listeEvents[id].creneaux[id];
 }
 var getCreneauByHeureDebut = function(idUtilisateur, idEvent, disponibilite, heureDebut) {
-    listeEvents[id].creneaux.forEach(function(creneau) {
-        if (creneau.heureDebut == heureDebut) {
-            creneau.utilisateurs.push(idUtilisateur, disponibilite);
-        }
+        listeEvents[id].creneaux.forEach(function(creneau) {
+            if (creneau.heureDebut == heureDebut) {
+                creneau.utilisateurs.push(idUtilisateur, disponibilite);
+            }
+        });
+    }
+    /*
+    elements.forEach(function(element) {
+        var attribute = element.getAttribute('data-attr');
+        element.onclick = function() {
+            alert(attribute);
+        };
     });
-}
-
-elements.forEach(function(element) {
-    var attribute = element.getAttribute('data-attr');
-    element.onclick = function() {
-        alert(attribute);
-    };
-});
-
+    */
 exports.creer = creer;
 exports.getListeEvenements = getListeEvenements;
 exports.getEvenementById = getEvenementById;
