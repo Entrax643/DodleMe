@@ -42,6 +42,8 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li ng-class="{active: activeTab == 'acceuil'}"><a ng-click="activeTab = 'acceuil'" href="#/">Accueil</a></li>
+                        <li ng-show="$root.isConnected" ng-class="{active: activeTab == 'mesEvents'}"><a ng-click="activeTab = 'mesEvents'" ng-href="#!/mesEvents">Mes évenements</a></li>
+                        <li ng-show="$root.isConnected" ng-class="{active: activeTab == 'creerEvent'}"><a ng-click="activeTab = 'creerEvent'" ng-href="#!/creerEvent">Nouvel évenement</a></li>
                         <li ng-show="!$root.isConnected" ng-class="{active: activeTab == 'inscription'}"><a ng-click="activeTab = 'inscription'" ng-href="#!/inscription">Inscription</a></li>
                         <li ng-show="!$root.isConnected" ng-class="{active: activeTab == 'connexion'}"><a ng-click="activeTab = 'connexion'" ng-href="#!/connexion">Connexion</a></li>
                         <button class="btn btn-danger navbar-btn" ng-controller="DeconnexionCtrl" ng-show="$root.isConnected" ng-click="disconnect()">Déconnexion</button>
