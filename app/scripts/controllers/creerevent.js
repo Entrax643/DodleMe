@@ -21,5 +21,6 @@ angular.module('dodleme')
     };
   })
 
-  .controller('CreerEventCtrl', function ($scope) {
+  .controller('CreerEventCtrl', function ($scope, $localStorage) {
+    $scope.$storage = $localStorage;
   });

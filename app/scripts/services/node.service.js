@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dodleme')
-  .factory('NodesServices', function ($http) {
+  .factory('NodesService', function ($http) {
 
     // private functions
     function handleSuccess(data) {

@@ -21,6 +21,7 @@ angular
     'ngMaterial',
     'ngMaterialDatePicker',
     'uiGmapgoogle-maps',
+    'ngStorage',
     'nemLogging'
   ])
   .config(function ($routeProvider) {
