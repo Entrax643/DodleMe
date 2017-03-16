@@ -14,7 +14,7 @@ function Evenement(id, nom, description, dateDebut, lieu, createur, creneaux) {
     this.creneaux = creneaux;
 }
 
-var creer = function(id, nom, description, dateDebut, lieu, createur, creneaux) {
+var creer = function (id, nom, description, dateDebut, lieu, createur, creneaux) {
     if (typeof listeEvents[id] === 'undefined') {
         listeEvents[id] = new Evenement(id, nom, description, dateDebut, lieu, createur, creneaux);
         return getEvenementById(id);
@@ -22,24 +22,24 @@ var creer = function(id, nom, description, dateDebut, lieu, createur, creneaux) 
     return { "erreur": "Existe déjà !" };
 }
 
-var creerURL = function(id, nom) {
+var creerURL = function (id, nom) {
     if (typeof listeEvents[id] == 'undefined') {
         listeEvents[id] = new Evenement(id, nom);
         return getEvenementById(id);
     }
     return { "erreur": "Existe déjà!" };
 }
-var getListeEvenements = function() {
+var getListeEvenements = function () {
     return listeEvents;
 }
-var getEvenementById = function(id) {
+var getEvenementById = function (id) {
     return listeEvents[id];
 }
-var getCreneauById = function(id) {
+var getCreneauById = function (id) {
     return listeEvents[id].creneaux[id];
 }
-var getCreneauByHeureDebut = function(idUtilisateur, idEvent, disponibilite, heureDebut) {
-    listeEvents[id].creneaux.forEach(function(creneau) {
+var getCreneauByHeureDebut = function (idUtilisateur, idEvent, disponibilite, heureDebut) {
+    listeEvents[id].creneaux.forEach(function (creneau) {
         if (creneau.heureDebut == heureDebut) {
             creneau.utilisateurs.push(idUtilisateur, disponibilite);
         }
@@ -51,8 +51,8 @@ elements.forEach(function(element) {
     element.onclick = function() {
         alert(attribute);
     };
-});*/
-
+});
+*/
 exports.creer = creer;
 exports.getListeEvenements = getListeEvenements;
 exports.getEvenementById = getEvenementById;
