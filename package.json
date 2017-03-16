@@ -39,5 +39,10 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js"
+  },
+  "dependencies": {
+    "angular-material": "^1.1.3",
+    "bootstrap-datepicker": "^1.6.4",
+    "express": "^4.15.2"
   }
 }
