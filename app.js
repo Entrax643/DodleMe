@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use(express.static('../Front'));
-app.use('/bower_components', express.static('../Front/bower_components'));
+app.use(express.static(__dirname + '/app'));
+app.use('/bower_components',express.static(__dirname + '/bower_components'));
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
@@ -64,17 +64,16 @@ app.post('/event/ajouterCreneau/:id', function(req, res) {
 app.get('/utilisateurs', function (req, res) {
     res.json(gestionUtilisateurs.getListeUtilisateurs());
 });
-app.get('/utilisateur/:id', function (req, res) {
-    console.log('creerUtilisateur' + " ID : " + req.params.id);
-    res.json(gestionUtilisateurs.getUtilisateurById(req.params.id));
+app.get('/utilisateur/:pseudo', function (req, res) {
+    console.log('getUtilisateur' + " \n ID : " + req.params.pseudo);
+    res.json(gestionUtilisateurs.getUtilisateurByPseudo(req.params.pseudo));
 });
 app.post('/creerUtilisateur/', function (req, res) {
-    console.log('creerUtilisateur' + "\n ID : " + req.body.id + "\n Pseudo : " + req.body.pseudo + "\n Mot de passe : " + req.body.password + "\n Nom : " + req.body.nom + "\n Prenom : " + req.body.prenom);
     var user = gestionUtilisateurs.creer(req.body.pseudo, req.body.password, req.body.nom, req.body.prenom);
     res.json(user);
 });
 
 //Listen
-app.listen(3000, function () {
-    console.log('Node Events app listening on port 3000!');
+app.listen(5000, function () {
+    console.log('Node Events app listening on port 5000!');
 });
