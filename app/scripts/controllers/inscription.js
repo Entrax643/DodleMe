@@ -1,10 +1,10 @@
 'use strict';
 angular.module('dodleme')
-    .controller('InscriptionCtrl', function ($scope, NodesServices) {
+    .controller('InscriptionCtrl', function ($scope, NodeService) {
         $scope.user = { prenom: 'Guillaume', nom: 'Fines' };
-        $scope.register = function register() {
+        $scope.register = function () {
             $scope.dataLoading = true;
-            NodesServices.creerUser($scope.user)
+            NodeService.creerUser($scope.user)
                 .then(function (response) {
                     if (response.success) {
                         if (response.message.data) {

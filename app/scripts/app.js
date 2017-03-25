@@ -21,14 +21,15 @@ angular
     'ngMaterial',
     'ngMaterialDatePicker',
     'uiGmapgoogle-maps',
+    'ngStorage',
     'nemLogging'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/tousLesEvenements.html',
+        controller: 'TousLesEvenementsCtrl',
+        controllerAs: 'tousLesEvenements'
       })
       .when('/tousLesEvenements', {
         templateUrl: 'views/tousLesEvenements.html',

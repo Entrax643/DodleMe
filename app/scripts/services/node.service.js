@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dodleme')
-  .factory('NodesServices', function ($http) {
+  .factory('NodeService', function ($http) {
 
     // private functions
     function handleSuccess(data) {
@@ -29,8 +29,8 @@ angular.module('dodleme')
       return $http.post(this.path + 'creerEvent', event).then(handleSuccess, handleError('Erreur lors de la création de l\'évènement'));
     }
 
-    function getEvent(id) {
-      return $http.get(this.path + 'event/' + id).then(handleSuccess, handleError('Erreur lors de la récupération de l\'évènement'));
+    function getEventByNom(nom) {
+      return $http.get(this.path + 'event/' + nom).then(handleSuccess, handleError('Erreur lors de la récupération de l\'utilisateur'));
     }
 
     function getAllEvents() {
@@ -42,7 +42,7 @@ angular.module('dodleme')
     service.getUserByPseudo = getUserByPseudo;
     service.getAllUsers = getAllUsers;
     service.creerEvent = creerEvent;
-    service.getEvent = getEvent;
+    service.getEventByNom = getEventByNom;
     service.getAllEvents = getAllEvents;
     service.path = 'http://localhost:5000/';
     return service;

@@ -10,64 +10,58 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static(__dirname + '/app'));
-app.use('/bower_components',express.static(__dirname + '/bower_components'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
 //Events
-app.get('/events', function(req, res) {
+//retourne tous les évènements
+app.get('/events', function (req, res) {
+    console.log('getListeEvenements');
+    console.log(gestionEvents.getListeEvenements());
     res.json(gestionEvents.getListeEvenements());
 });
-app.get('/event/:id', function(req, res) {
-    res.json(gestionEvents.getEvenementById(req.params.id));
+
+//retourne un évènement à partir de son nom
+app.get('/event/:nom', function (req, res) {
+    console.log('getEvenement' + " \n Nom : " + req.params.nom);
+    res.json(gestionEvents.getEvenementByNom(req.params.nom));
 });
-app.post('/event', function(req, res) {
-    var event = gestionEvents.creer(req.body.id, req.body.nom, req.body.description, req.body.dateDebut, req.body.lieu, req.body.createur, req.body.creneaux);
+
+//permet de créer un évènement
+app.post('/creerEvent/', function (req, res) {
+    var event = gestionEvents.creer(req.body.createurEvent, req.body.nomEvent, req.body.descriptionEvent, req.body.dateEvent, req.body.creneauxEvent, req.body.lieuEvent);
     res.json(event);
 });
-app.post('/ajouterUser/:idUtil/:idEvent/:disponibilite/:heureDebut', function(req, res) {
-    var event = getEvenementById(id);
+
+app.post('/ajouterUser/:idUtil/:idEvent/:disponibilite/:heureDebut', function (req, res) {
+    var event = getEvenementByNom(id);
     gestionEvents.getCreneauByHeureDebut(req.params.idUtil, req.params.idEvent, req.params.disponibilite, req.params.heureDebut);
 });
-/*
-{
-    "id": "5",
-    "nom": "test",
-    "description": "description du projet",
-    "createur": "user1",
-    "creneaux": [{
-            "dateDebut": "20-05-2017",
-            "dateFin": "22-05-2017",
-            "heureDebut": "15h",
-            "heureFin": "16h",
-            "utilisateurs" : [
-                {"id": "user1", "dispo":"oui"},
-                {"id": "user2", "dispo":"non"}
-            ]
-        },
-        {
-            "heureDebut": "19h",
-            "heureFin": "21h"
-        }
-    ]
-}
-*/
-app.post('/event/ajouterCreneau/:id', function(req, res) {
-    var event = gestionEvents.getEvenementById(req.params.id);
+
+app.post('/event/ajouterCreneau/:id', function (req, res) {
+    var event = gestionEvents.getEvenementByNom(req.params.id);
     event.creneaux.push(req.body.creneaux);
     res.json(event);
 });
 
 //Users
+//retourne tous les utilisateurs
 app.get('/utilisateurs', function (req, res) {
+    console.log('getListeUtilisateurs');
+    console.log(gestionUtilisateurs.getListeUtilisateurs());
     res.json(gestionUtilisateurs.getListeUtilisateurs());
 });
+
+//retourne un utilisateur à partir de son pseudo
 app.get('/utilisateur/:pseudo', function (req, res) {
     console.log('getUtilisateur' + " \n ID : " + req.params.pseudo);
     res.json(gestionUtilisateurs.getUtilisateurByPseudo(req.params.pseudo));
 });
+
+//permet de créer un utilisateur
 app.post('/creerUtilisateur/', function (req, res) {
     var user = gestionUtilisateurs.creer(req.body.pseudo, req.body.password, req.body.nom, req.body.prenom);
     res.json(user);

@@ -1,0 +1,89 @@
+<div class="container">
+    <h2>Nos Evenements</h2>
+    <div ng-show="error" class="alert alert-danger">{{error}}</div>
+    <div ng-show="info" class="alert alert-info">{{info}}</div>
+    <div role="main">
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <input type="text" class="form-control" ng-model="searchQ">
+                </div>
+            </div>
+        </form>
+        <table class="table">
+            <tr>
+                <th ng-click="sortType = 'nomEvent'; sortR = !sortR">
+                    Nom
+                    <span ng-show="sortType == 'nomEvent' && !sortR" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'nomEvent' && sortR" class="fa fa-caret-up"></span>
+                </th>
+                <th ng-click="sortType = 'dateEvent'; sortR = !sortR">
+                    Date
+                    <span ng-show="sortType == 'dateEvent' && !sortR" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'dateEvent' && sortR" class="fa fa-caret-up"></span>
+                </th>
+                <th ng-click="sortType = 'lieuEvent'; sortR = !sortR">
+                    Lieu
+                    <span ng-show="sortType == 'lieuEvent' && !sortR" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'lieuEvent' && sortR" class="fa fa-caret-up"></span>
+                </th>
+                <th ng-click="sortType = 'createurEvent'; sortR = !sortR">
+                    Créateur
+                    <span ng-show="sortType == 'createurEvent' && !sortR" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'createurEvent' && sortR" class="fa fa-caret-up"></span>
+                </th>
+            </tr>
+            <tr ng-repeat="event in allEvents | orderBy:sortType:sortR | filter:searchQ" ng-click="selectEvent(event)" ng-class="{ 'info': estCreateur(event),'success': estPresent(event),'danger': estAbsent(event) }">
+                <td>{{event.nomEvent}}</td>
+                <td>{{event.dateEvent|date}}</td>
+                <td>{{event.lieuEvent}}</td>
+                <td>{{event.createurEvent}}</td>
+            </tr>
+        </table>
+        <div ng-show="selectedEvent">
+            <div class="form-group" ng-class="{ 'has-error': form.pseudo.$dirty && form.pseudo.$error.required }">
+                <!-- <label for="pseudo">Créateur</label>
+                <input type="text" name="pseudo" id="pseudo" class="form-control" ng-model="selectedEvent.createurEvent" ng-disabled="true"
+                /> -->
+
+                <!-- <label for="nomEvent">Nom de l'évènement</label>
+                <input type="text" name="nomEvent" id="nomEvent" class="form-control" ng-model="selectedEvent.nomEvent" disabled /> -->
+
+                <label for="descriptionEvent">Description</label>
+                <textarea type="text" name="descriptionEvent" id="descriptionEvent" class="form-control" ng-model="selectedEvent.descriptionEvent"
+                    disabled />
+
+                <!-- <label for="dateEvent">Date</label>
+                <input type="text" name="dateEvent" id="dateEvent" class="form-control" ng-model="selectedEvent.dateEvent" mdc-datetime-picker
+                    date="true" time="false" show-todays-date min-date="Today" today-text="Aujourd'hui" cancel-text="Retour"
+                    format="DD-MM-YYYY" disabled /> -->
+
+                <!-- <div class="form-control">
+                    Créneaux disponibles : <label class="checkbox-inline" id="creneaux" ng-repeat="creneau in selectedEvent.creneauxEvent"
+                        ng-show="creneau.selected">{{ creneau.heure }} </label>
+                </div> -->
+
+                <!-- <label for="lieuEvent">Lieu</label>
+                <input type="text" name="lieuEvent" id="lieuEvent" class="form-control" ng-model="selectedEvent.lieuEvent" disabled/> -->
+            </div>
+            <form name="form" ng-submit="addUtilisateur()" role="form" class="text-center">
+                <label>Créneaux disponibles :</label>
+                <div ng-repeat="creneau in selectedEvent.creneauxEvent" class="radio" ng-show="creneau.selected">
+                    {{creneau.heure}} :
+                    <label><input type="radio" ng-model="creneau.presence" ng-value="true">Oui</label>
+                    <label><input type="radio" ng-model="creneau.presence" ng-value="false">Non</label>
+                </div>
+                <div class="text-center">
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">Apply</button>
+                        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                        />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
