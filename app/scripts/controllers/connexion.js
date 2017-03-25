@@ -1,19 +1,19 @@
 'use strict';
 angular.module('dodleme')
-    .controller('ConnexionCtrl', function ($scope, $location, $localStorage, NodesService) {
+    .controller('ConnexionCtrl', function ($scope, $location, $localStorage, NodeService) {
         $scope.pseudo = "Entrax";
-        $scope.login = function login() {
+        $scope.login = function () {
             $scope.dataLoading = true;
-            NodesService.getUserByPseudo($scope.pseudo)
+            NodeService.getUserByPseudo($scope.pseudo)
                 .then(function (response) {
                     if (response.success) {
                         if (response.message.data) {
                             $scope.user = response.message.data;
                             if ($scope.password == $scope.user.password) {
 
-                                $localStorage.pseudo = $scope.user.pseudo ;
-                                $localStorage.prenom = $scope.user.nom ;
-                                $localStorage.nom = $scope.user.nom ;
+                                $localStorage.pseudo = $scope.user.pseudo;
+                                $localStorage.prenom = $scope.user.nom;
+                                $localStorage.nom = $scope.user.nom;
                                 $localStorage.isConnected = true;
 
                                 $scope.error = "";
@@ -22,7 +22,7 @@ angular.module('dodleme')
                                 $scope.info = "";
                                 $scope.error = "Mot de passe erroné";
                             }
-                            //$location.path("#!/");
+                            //$location.path("#!/tousLesEvenements");
                         } else {
                             $scope.info = "";
                             $scope.error = "Pseudo erroné";
@@ -30,7 +30,7 @@ angular.module('dodleme')
                         $scope.dataLoading = false;
                     } else {
                         $scope.info = response.data;
-                        $scope.error ="Erreur lors de la connexion";
+                        $scope.error = "Erreur lors de la connexion";
                         $scope.dataLoading = false;
                     }
                 });

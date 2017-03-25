@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -15,7 +16,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <!-- endbuild -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
 </head>
@@ -26,7 +27,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header" ng-controller="MainCtrl">
+    <div class="header" ng-controller="HeaderCtrl">
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
@@ -41,7 +42,7 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li ng-class="{active: activeTab == 'acceuil'}"><a ng-click="activeTab = 'acceuil'" href="#/">Accueil</a></li>
+                        <li ng-class="{active: activeTab == 'tousLesEvenements'}"><a ng-click="activeTab = 'tousLesEvenements'" href="#/">Nos Evenements</a></li>
                         <li ng-show="$storage.isConnected" ng-class="{active: activeTab == 'mesEvents'}"><a ng-click="activeTab = 'mesEvents'" ng-href="#!/mesEvents">Mes évenements</a></li>
                         <li ng-show="$storage.isConnected" ng-class="{active: activeTab == 'creerEvent'}"><a ng-click="activeTab = 'creerEvent'" ng-href="#!/creerEvent">Nouvel évenement</a></li>
                         <li ng-show="!$storage.isConnected" ng-class="{active: activeTab == 'inscription'}"><a ng-click="activeTab = 'inscription'" ng-href="#!/inscription">Inscription</a></li>
@@ -57,7 +58,7 @@
         <div ng-view=""></div>
     </div>
 
-    <div class="footer">
+    <div class="footer" ng-controller="FooterCtrl">
         <div class="container">
             <p class="col-md-6 col-md-offset-3"><span class="glyphicon glyphicon-heart"></span> from the DodleMe team <span class="glyphicon glyphicon-heart"></span></p>
         </div>
@@ -95,11 +96,15 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/creerevent.js"></script>
-    <script src="scripts/controllers/inscription.js"></script>
     <script src="scripts/controllers/connexion.js"></script>
+    <script src="scripts/controllers/creerevent.js"></script>
     <script src="scripts/controllers/deconnexion.js"></script>
+    <script src="scripts/controllers/header.js"></script>
+    <script src="scripts/controllers/footer.js"></script>
+    <script src="scripts/controllers/inscription.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/tousLesEvenements.js"></script>
+
     <script src="scripts/services/node.service.js"></script>
     <!-- endbuild -->
 

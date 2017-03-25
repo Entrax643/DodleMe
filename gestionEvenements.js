@@ -1,61 +1,38 @@
 var listeEvents = {};
+var Events = [];
 
-function Evenement(id, nom) {
-    this.id = id;
-    this.nom = nom;
+function Evenement(createur, nom, description, date, creneaux, lieu) {
+    this.createurEvent = createur;
+    this.nomEvent = nom;
+    this.descriptionEvent = description;
+    this.dateEvent = date;
+    this.creneauxEvent = creneaux;
+    this.lieuEvent = lieu;
+    this.Utilisateurs = [];
 }
 
-function Evenement(id, nom, description, dateDebut, lieu, createur, creneaux) {
-    this.id = id;
-    this.nom = nom;
-    this.description = description;
-    this.dateDebut = dateDebut;
-    this.createur = createur;
-    this.creneaux = creneaux;
-}
-
-var creer = function (id, nom, description, dateDebut, lieu, createur, creneaux) {
-    if (typeof listeEvents[id] === 'undefined') {
-        listeEvents[id] = new Evenement(id, nom, description, dateDebut, lieu, createur, creneaux);
-        return getEvenementById(id);
+var creer = function (createur, nom, description, date, creneaux, lieu) {
+    if (typeof listeEvents[nom] === 'undefined') {
+        listeEvents[nom] = new Evenement(createur, nom, description, date, creneaux, lieu);
+        Events.push(listeEvents[nom]);
+        console.log('creerEvent' + "\n createur : " + createur + "\n nom: " + nom + "\n description : " + description + "\n date : " + date + "\n creneaux : " + creneaux + "\n lieu : " + lieu);
+        return true;
     }
-    return { "erreur": "Existe déjà !" };
+    return false;
 }
 
-var creerURL = function (id, nom) {
-    if (typeof listeEvents[id] == 'undefined') {
-        listeEvents[id] = new Evenement(id, nom);
-        return getEvenementById(id);
-    }
-    return { "erreur": "Existe déjà!" };
-}
 var getListeEvenements = function () {
-    return listeEvents;
+    //return listeEvents;
+    return Events;
 }
-var getEvenementById = function (id) {
-    return listeEvents[id];
+
+var getEvenementByNom = function (nom) {
+    if (typeof listeEvents[nom] === 'undefined') {
+        return false;
+    }
+    return listeEvents[nom];
 }
-var getCreneauById = function (id) {
-    return listeEvents[id].creneaux[id];
-}
-var getCreneauByHeureDebut = function (idUtilisateur, idEvent, disponibilite, heureDebut) {
-    listeEvents[id].creneaux.forEach(function (creneau) {
-        if (creneau.heureDebut == heureDebut) {
-            creneau.utilisateurs.push(idUtilisateur, disponibilite);
-        }
-    });
-}
-/*
-elements.forEach(function(element) {
-    var attribute = element.getAttribute('data-attr');
-    element.onclick = function() {
-        alert(attribute);
-    };
-});
-*/
+
 exports.creer = creer;
 exports.getListeEvenements = getListeEvenements;
-exports.getEvenementById = getEvenementById;
-exports.creerURL = creerURL;
-exports.getCreneauById = getCreneauById;
-exports.getCreneauByHeureDebut = getCreneauByHeureDebut;
+exports.getEvenementByNom = getEvenementByNom;

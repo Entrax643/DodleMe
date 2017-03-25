@@ -1,43 +1,45 @@
-<div>
+<div class="container">
     <div class="jumbotron">
         <h2 class="text-center">Créer un évènement</h2>
     </div>
     <div ng-show="error" class="alert alert-danger">{{error}}</div>
     <div ng-show="info" class="alert alert-info">{{info}}</div>
-    <br>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Pseudo</label>
-            <div class="col-sm-8">
-                <input ng-disabled="true" ng-model="$storage.pseudo" class="form-control" type="text " id="pseudo " placeholder="Pseudo ">
+    <form name="form" ng-submit="addEvent()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.pseudo.$dirty && form.pseudo.$error.required }">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="pseudo" id="pseudo" class="form-control" ng-model="$storage.pseudo" ng-disabled="true" />
+            <span ng-show="form.pseudo.$dirty && form.pseudo.$error.required" class="help-block">Pseudo requis</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.nomEvent.$dirty && form.nomEvent.$error.required }">
+            <label for="nomEvent">Nom de l'évènement</label>
+            <input type="text" name="nomEvent" id="nomEvent" class="form-control" ng-model="event.nomEvent" required />
+            <span ng-show="form.nomEvent.$dirty && form.nomEvent.$error.required" class="help-block">Nom requis</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.descriptionEvent.$dirty && form.descriptionEvent.$error.required }">
+            <label for="descriptionEvent">Description</label>
+            <textarea type="text" name="descriptionEvent" id="descriptionEvent" class="form-control" ng-model="event.descriptionEvent"
+                required />
+            <span ng-show="form.descriptionEvent.$dirty && form.descriptionEvent.$error.required" class="help-block">Description requise</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.dateEvent.$dirty && form.dateEvent.$error.required }">
+            <label for="dateEvent">Date</label>
+            <input type="text" name="dateEvent" id="dateEvent" class="form-control" ng-model="event.dateEvent" mdc-datetime-picker date="true"
+                time="false" show-todays-date min-date="Today" today-text="Aujourd'hui" cancel-text="Retour" format="DD-MM-YYYY"
+                required />
+            <span ng-show="form.dateEvent.$dirty && form.dateEvent.$error.required" class="help-block">Date requise</span>
+            <label class="checkbox-inline" id="creneaux" ng-repeat="creneau in event.creneauxEvent"><input type="checkbox" ng-click="creneau.selected = !creneau.selected" ng-checked="creneau.selected"> {{ creneau.heure }} </label>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lieuEvent.$dirty && form.lieuEvent.$error.required }">
+            <label for="lieuEvent">Lieu</label>
+            <input type="text" name="lieuEvent" id="lieuEvent" class="form-control" ng-model="event.lieuEvent" googleplace required/>
+            <span ng-show="form.lieuEvent.$dirty && form.lieuEvent.$error.required" class="help-block">Lieu requis</span>
+        </div>
+        <div class="text-center">
+            <div class="form-actions">
+                <button ng-disabled="form.$invalid || dataLoading" class="btn btn-success">Créer</button>
+                <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                />
             </div>
         </div>
-        <div class="form-group ">
-            <label class="col-sm-4 control-label ">Nom de l'évènement</label>
-            <div class="col-sm-8 ">
-                <input class="form-control " type="text " id="nomevent " placeholder="Nom de l 'évènement">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Description de l'évènement</label>
-            <div class="col-sm-8">
-                <textarea class="form-control" placeholder="Description"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Choisir un créneau</label>
-            <div class="col-sm-8">
-                <input class="form-control" mdc-datetime-picker date="true" time="true" type="text" id="datetime" placeholder="Date" show-todays-date
-                    min-date="Today" ng-model="dateTime" today-text="Aujourd'hui" cancel-text="Retour" format="DD-MM-YYYY HH:mm">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-4 control-label">Choisir un lieu</label>
-            <div class="col-sm-8">
-                <input ng-model="chosenPlace" class="form-control" googleplace/>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-default">Créer</button>
-        <br><br>
     </form>
 </div>
