@@ -36,6 +36,12 @@ app.post('/creerEvent/', function (req, res) {
     res.json(event);
 });
 
+//permet d'associer un utilisateur aux créneaux d'un évènement
+app.put('/updateEvent/', function (req, res) {
+    var updateEvent = gestionEvents.updateEvent(req.body);
+    res.json(updateEvent);
+});
+
 app.post('/ajouterUser/:idUtil/:idEvent/:disponibilite/:heureDebut', function (req, res) {
     var event = getEvenementByNom(id);
     gestionEvents.getCreneauByHeureDebut(req.params.idUtil, req.params.idEvent, req.params.disponibilite, req.params.heureDebut);
