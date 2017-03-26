@@ -4,11 +4,11 @@ angular.module('dodleme')
 
     // private functions
     function handleSuccess(data) {
-        return { success: true, message: data };
+      return { success: true, message: data };
     }
 
     function handleError(data) {
-        return { success: false, message: data };
+      return { success: false, message: data };
     }
 
     //Utilisateurs
@@ -24,7 +24,7 @@ angular.module('dodleme')
       return $http.get(this.path + 'utilisateurs').then(handleSuccess, handleError('Erreur lors de la récupération des utilisateurs'));
     }
 
-    //Utilisateurs
+    //Evenements
     function creerEvent(event) {
       return $http.post(this.path + 'creerEvent', event).then(handleSuccess, handleError('Erreur lors de la création de l\'évènement'));
     }
@@ -37,6 +37,10 @@ angular.module('dodleme')
       return $http.get(this.path + 'events').then(handleSuccess, handleError('Erreur lors de la récupération des évènements'));
     }
 
+    function updateEvent(event) {
+      return $http.put(this.path + 'updateEvent', event).then(handleSuccess, handleError('Erreur lors de la récupération des évènements'));
+    }
+
     var service = {};
     service.creerUser = creerUser;
     service.getUserByPseudo = getUserByPseudo;
@@ -44,6 +48,7 @@ angular.module('dodleme')
     service.creerEvent = creerEvent;
     service.getEventByNom = getEventByNom;
     service.getAllEvents = getAllEvents;
+    service.updateEvent = updateEvent;
     service.path = 'http://localhost:5000/';
     return service;
   });

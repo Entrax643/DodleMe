@@ -28,26 +28,6 @@ var getUtilisateurByPseudo = function (pseudo) {
     return listeUtilisateurs[pseudo];
 };
 
-var addEvent = function (pseudo, event, creneau, dispo) {
-    user = getUtilisateurByPseudo(pseudo);
-    if (typeof user.listeEvents[event] === 'undefined') {
-        user.listeEvents[event] = { event: event, creneau: creneau, dispo: dispo };
-        console.log('addEvent' + "\n Pseudo : " + pseudo + "\n Event : " + event + "\n Creneau : " + creneau + "\n Dispo : " + dispo);
-        return true;
-    }
-    return false;
-};
-
-var removeEvent = function (pseudo, event) {
-    user = getUtilisateurByPseudo(pseudo);
-    if (typeof user.listeEvents[event] !== 'undefined') {
-        user.listeEvents.splice(event, 1);
-        console.log('removeEvent' + "\n Pseudo : " + pseudo + "\n Event : " + event);
-        return true;
-    }
-    return false;
-};
-
 var getListeEventsByPseudo = function (pseudo) {
     return getUtilisateurByPseudo(pseudo).listeEvents;
 };
@@ -55,6 +35,4 @@ var getListeEventsByPseudo = function (pseudo) {
 exports.creer = creer;
 exports.getListeUtilisateurs = getListeUtilisateurs;
 exports.getUtilisateurByPseudo = getUtilisateurByPseudo;
-exports.addEvent = addEvent;
-exports.removeEvent = removeEvent;
 exports.getListeEventsByPseudo = getListeEventsByPseudo;

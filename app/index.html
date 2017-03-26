@@ -42,7 +42,7 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li ng-class="{active: activeTab == 'tousLesEvenements'}"><a ng-click="activeTab = 'tousLesEvenements'" ng-href="#/tousLesEvenements">Nos Evenements</a></li>
+                        <li ng-class="{active: activeTab == 'tousLesEvenements'}"><a ng-click="activeTab = 'tousLesEvenements'" ng-href="#!/tousLesEvenements">Nos Evenements</a></li>
                         <li ng-show="$storage.isConnected" ng-class="{active: activeTab == 'mesEvents'}"><a ng-click="activeTab = 'mesEvents'" ng-href="#!/mesEvents">Mes évenements</a></li>
                         <li ng-show="$storage.isConnected" ng-class="{active: activeTab == 'creerEvent'}"><a ng-click="activeTab = 'creerEvent'" ng-href="#!/creerEvent">Nouvel évenement</a></li>
                         <li ng-show="!$storage.isConnected" ng-class="{active: activeTab == 'inscription'}"><a ng-click="activeTab = 'inscription'" ng-href="#!/inscription">Inscription</a></li>

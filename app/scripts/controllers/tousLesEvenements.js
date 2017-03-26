@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dodleme')
-    .controller('TousLesEvenementsCtrl', function($scope, $localStorage, NodeService, mdcDateTimeDialog) {
+    .controller('TousLesEvenementsCtrl', function ($scope, $localStorage, NodeService, mdcDateTimeDialog) {
         loadAllEvents();
         $scope.$storage = $localStorage;
 
@@ -10,36 +10,32 @@ angular.module('dodleme')
 
         function loadAllEvents() {
             NodeService.getAllEvents()
-                .then(function(response) {
+                .then(function (response) {
                     $scope.allEvents = response.message.data;
                 });
         }
 
-        $scope.selectEvent = function(event) {
-            //$scope.error = event;
+        $scope.selectEvent = function (event) {
             $scope.selectedEvent = event;
+            $scope.selectedEvent.creneauxEvent.forEach(function (item, index) {
+                if (!item.listeUtilisateurs[$scope.$storage.pseudo])
+                    item.listeUtilisateurs[$scope.$storage.pseudo] = false;
+                $scope.participantsSelectedEvent = Object.keys(item.listeUtilisateurs).length;
+            });
         }
 
-        $scope.estCreateur = function(event) {
+        $scope.updateEvent = function () {
+            $scope.info = $scope.selectedEvent;
+            NodeService.updateEvent($scope.selectedEvent)
+                .then(function (response) {
+                    $scope.error = response;
+                });
+        }
+
+        $scope.estCreateur = function (event) {
             if (event.createurEvent == $scope.$storage.pseudo) {
                 return true;
             }
-            return false;
-        }
-
-        $scope.estPresent = function(event) {
-            event.Utilisateurs.forEach(function(item, index) {
-                if (item.nom = $scope.$storage.pseudo && item.participe)
-                    return true;
-            })
-            return false;
-        }
-
-        $scope.estAbsent = function(event) {
-            event.Utilisateurs.forEach(function(item, index) {
-                if (item.nom = $scope.$storage.pseudo && !item.participe)
-                    return true;
-            })
             return false;
         }
     });
