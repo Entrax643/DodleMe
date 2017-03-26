@@ -26,9 +26,9 @@ angular.module('dodleme')
 
     $scope.event = {
       createurEvent: $scope.$storage.pseudo,
-      nomEvent: 'nomEvent',
-      descriptionEvent: 'C\'est la fête !',
-      dateEvent: '29-03-2017',
+      nomEvent: '',
+      descriptionEvent: '',
+      dateEvent: '',
       creneauxEvent: [
         { heure: "00h-02h", selected: false, listeUtilisateurs: {} },
         { heure: "02h-04h", selected: false, listeUtilisateurs: {} },
@@ -37,13 +37,13 @@ angular.module('dodleme')
         { heure: "08h-10h", selected: false, listeUtilisateurs: {} },
         { heure: "10h-12h", selected: false, listeUtilisateurs: {} },
         { heure: "12h-14h", selected: false, listeUtilisateurs: {} },
-        { heure: "14h-16h", selected: true, listeUtilisateurs: {} },
-        { heure: "16h-18h", selected: true, listeUtilisateurs: {} },
-        { heure: "18h-20h", selected: true, listeUtilisateurs: {} },
+        { heure: "14h-16h", selected: false, listeUtilisateurs: {} },
+        { heure: "16h-18h", selected: false, listeUtilisateurs: {} },
+        { heure: "18h-20h", selected: false, listeUtilisateurs: {} },
         { heure: "20h-22h", selected: false, listeUtilisateurs: {} },
         { heure: "22h-00h", selected: false, listeUtilisateurs: {} }
       ],
-      lieuEvent: 'Université-Paul-Sabatier, Toulouse, France'
+      lieuEvent: ''
     };
 
     $scope.addEvent = function () {

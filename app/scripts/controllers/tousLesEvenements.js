@@ -25,9 +25,7 @@ angular.module('dodleme')
         }
 
         $scope.updateEvent = function () {
-            NodeService.updateEvent($scope.selectedEvent)
-                .then(function (response) {
-                });
+            NodeService.updateEvent($scope.selectedEvent);
         }
 
         $scope.estCreateur = function (event) {

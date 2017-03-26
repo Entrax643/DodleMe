@@ -1,7 +1,6 @@
 'use strict';
 angular.module('dodleme')
     .controller('ConnexionCtrl', function ($scope, $location, $localStorage, NodeService) {
-        $scope.pseudo = "Entrax";
         $scope.login = function () {
             $scope.dataLoading = true;
             NodeService.getUserByPseudo($scope.pseudo)
@@ -22,7 +21,7 @@ angular.module('dodleme')
                                 $scope.info = "";
                                 $scope.error = "Mot de passe erroné";
                             }
-                            //$location.path("#!/tousLesEvenements");
+                            $location.path("/tousLesEvenements");
                         } else {
                             $scope.info = "";
                             $scope.error = "Pseudo erroné";

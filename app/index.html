@@ -43,7 +43,7 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li ng-class="{active: activeTab == 'tousLesEvenements'}"><a ng-click="activeTab = 'tousLesEvenements'" ng-href="#!/tousLesEvenements">Nos Evenements</a></li>
+                        <li ng-show="$storage.isConnected" ng-class="{active: activeTab == 'tousLesEvenements'}"><a ng-click="activeTab = 'tousLesEvenements'" ng-href="#!/tousLesEvenements">Nos Evenements</a></li>
                         <li ng-show="$storage.isConnected" ng-class="{active: activeTab == 'creerEvent'}"><a ng-click="activeTab = 'creerEvent'" ng-href="#!/creerEvent">Nouvel évenement</a></li>
                         <li ng-show="!$storage.isConnected" ng-class="{active: activeTab == 'inscription'}"><a ng-click="activeTab = 'inscription'" ng-href="#!/inscription">Inscription</a></li>
                         <li ng-show="!$storage.isConnected" ng-class="{active: activeTab == 'connexion'}"><a ng-click="activeTab = 'connexion'" ng-href="#!/connexion">Connexion</a></li>
@@ -102,9 +102,8 @@
     <script src="scripts/controllers/header.js"></script>
     <script src="scripts/controllers/footer.js"></script>
     <script src="scripts/controllers/inscription.js"></script>
-    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/accueil.js"></script>
     <script src="scripts/controllers/tousLesEvenements.js"></script>
-    <script src="scripts/controllers/mesEvents.js"></script>
 
     <script src="scripts/services/node.service.js"></script>
     <!-- endbuild -->
