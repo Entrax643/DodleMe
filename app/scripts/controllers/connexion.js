@@ -17,14 +17,14 @@ angular.module('dodleme')
 
                                 $scope.error = "";
                                 $scope.info = "Bienvenue " + $scope.user.prenom + " " + $scope.user.nom;
+                                $location.path("/tousLesEvenements");
                             } else {
                                 $scope.info = "";
                                 $scope.error = "Mot de passe erroné";
                             }
-                            $location.path("/tousLesEvenements");
                         } else {
                             $scope.info = "";
-                            $scope.error = "Pseudo erroné";
+                            $scope.error = "Pseudonyme erroné";
                         }
                         $scope.dataLoading = false;
                     } else {
