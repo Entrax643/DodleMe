@@ -5,7 +5,6 @@ function Utilisateur(pseudo, password, nom, prenom) {
     this.password = password;
     this.nom = nom;
     this.prenom = prenom;
-    this.listeEvents = [];
 }
 
 var creer = function (pseudo, password, nom, prenom) {
@@ -28,11 +27,6 @@ var getUtilisateurByPseudo = function (pseudo) {
     return listeUtilisateurs[pseudo];
 };
 
-var getListeEventsByPseudo = function (pseudo) {
-    return getUtilisateurByPseudo(pseudo).listeEvents;
-};
-
 exports.creer = creer;
 exports.getListeUtilisateurs = getListeUtilisateurs;
 exports.getUtilisateurByPseudo = getUtilisateurByPseudo;
-exports.getListeEventsByPseudo = getListeEventsByPseudo;

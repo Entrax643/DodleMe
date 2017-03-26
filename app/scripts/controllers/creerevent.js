@@ -30,18 +30,18 @@ angular.module('dodleme')
       descriptionEvent: '',
       dateEvent: '',
       creneauxEvent: [
-        { heure: "00h-02h", selected: false, listeUtilisateurs: {} },
-        { heure: "02h-04h", selected: false, listeUtilisateurs: {} },
-        { heure: "04h-06h", selected: false, listeUtilisateurs: {} },
-        { heure: "06h-08h", selected: false, listeUtilisateurs: {} },
-        { heure: "08h-10h", selected: false, listeUtilisateurs: {} },
-        { heure: "10h-12h", selected: false, listeUtilisateurs: {} },
-        { heure: "12h-14h", selected: false, listeUtilisateurs: {} },
-        { heure: "14h-16h", selected: false, listeUtilisateurs: {} },
-        { heure: "16h-18h", selected: false, listeUtilisateurs: {} },
-        { heure: "18h-20h", selected: false, listeUtilisateurs: {} },
-        { heure: "20h-22h", selected: false, listeUtilisateurs: {} },
-        { heure: "22h-00h", selected: false, listeUtilisateurs: {} }
+        { heure: "00h-02h", selected: false, listeUtilisateurs: [] },
+        { heure: "02h-04h", selected: false, listeUtilisateurs: [] },
+        { heure: "04h-06h", selected: false, listeUtilisateurs: [] },
+        { heure: "06h-08h", selected: false, listeUtilisateurs: [] },
+        { heure: "08h-10h", selected: false, listeUtilisateurs: [] },
+        { heure: "10h-12h", selected: false, listeUtilisateurs: [] },
+        { heure: "12h-14h", selected: false, listeUtilisateurs: [] },
+        { heure: "14h-16h", selected: false, listeUtilisateurs: [] },
+        { heure: "16h-18h", selected: false, listeUtilisateurs: [] },
+        { heure: "18h-20h", selected: false, listeUtilisateurs: [] },
+        { heure: "20h-22h", selected: false, listeUtilisateurs: [] },
+        { heure: "22h-00h", selected: false, listeUtilisateurs: [] }
       ],
       lieuEvent: ''
     };
