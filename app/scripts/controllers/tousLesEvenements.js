@@ -8,6 +8,12 @@ angular.module('dodleme')
         $scope.sortR = false;
         $scope.searchQ = '';
 
+        /**
+         * Fonction appelée dès le lancement.
+         * Récupère la liste des évènements, puis envoie une notification à l'utilisateur actif si
+         * il est présent à un évènement terminé, et pour lequel il n'a pas été notifié de la fin
+         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+         */
         function init() {
             NodeService.getAllEvents()
                 .then(function (response) {
@@ -23,6 +29,10 @@ angular.module('dodleme')
                 });
         }
 
+        /**
+         * Sélectionne un évènement
+         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+         */
         $scope.selectEvent = function (event) {
             $scope.selectedEvent = event;
             $scope.participants = [];
@@ -90,7 +100,10 @@ angular.module('dodleme')
             }
             return false;
         }
-
+        /**
+        * Indique si l'utilisateur actuel est présent dans un des créneaux de event
+         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+        */
         $scope.estPresent = function (event) {
             var estPresent = false;
             event.creneauxEvent.forEach(function (item, index) {
@@ -101,6 +114,10 @@ angular.module('dodleme')
             return estPresent;
         }
 
+        /**
+         * Indique si l'utilisateur actuel a été notifié de la fin de l'évènement event
+         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+         */
         $scope.wasNotified = function (event) {
             var wasNotified = false;
             event.creneauxEvent.forEach(function (item, index) {

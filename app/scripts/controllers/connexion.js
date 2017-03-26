@@ -1,5 +1,8 @@
 'use strict';
 angular.module('dodleme')
+    /**
+     * Contrôleur connexion
+     */
     .controller('ConnexionCtrl', function ($scope, $location, $localStorage, NodeService) {
         $scope.login = function () {
             $scope.dataLoading = true;
