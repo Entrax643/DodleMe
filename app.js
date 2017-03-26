@@ -19,14 +19,14 @@ app.get('/', function (req, res) {
 //Events
 //retourne tous les évènements
 app.get('/events', function (req, res) {
-    console.log('getListeEvenements');
-    console.log(gestionEvents.getListeEvenements());
+    //console.log('getListeEvenements');
+    //console.log(gestionEvents.getListeEvenements());
     res.json(gestionEvents.getListeEvenements());
 });
 
 //retourne un évènement à partir de son nom
 app.get('/event/:nom', function (req, res) {
-    console.log('getEvenement' + " \n Nom : " + req.params.nom);
+    //console.log('getEvenement' + " \n Nom : " + req.params.nom);
     res.json(gestionEvents.getEvenementByNom(req.params.nom));
 });
 
@@ -56,14 +56,14 @@ app.post('/event/ajouterCreneau/:id', function (req, res) {
 //Users
 //retourne tous les utilisateurs
 app.get('/utilisateurs', function (req, res) {
-    console.log('getListeUtilisateurs');
-    console.log(gestionUtilisateurs.getListeUtilisateurs());
+    //console.log('getListeUtilisateurs');
+    //console.log(gestionUtilisateurs.getListeUtilisateurs());
     res.json(gestionUtilisateurs.getListeUtilisateurs());
 });
 
 //retourne un utilisateur à partir de son pseudo
 app.get('/utilisateur/:pseudo', function (req, res) {
-    console.log('getUtilisateur' + " \n ID : " + req.params.pseudo);
+    //console.log('getUtilisateur' + " \n ID : " + req.params.pseudo);
     res.json(gestionUtilisateurs.getUtilisateurByPseudo(req.params.pseudo));
 });
 

@@ -13,16 +13,15 @@
                 </div>
             </div>
         </form>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="btn-group btn-group-justified">
-                    <input type="radio" ng-model="mesEvents" id="tout_afficher" name="radioEvents" ng-value="false" />
-                    <label for="tout_afficher">Tout afficher</label>
-                    <input type="radio" ng-model="mesEvents" id="afficher_mesEvents" name="radioEvents" ng-value="true" />
-                    <label for="afficher_mesEvents">Afficher mes évènements</label>
-                </div>
-                <!--<input type="radio" ng-model="mesEvents" name="radioEvents" ng-value="estPresent() || estAbsent()"> Afficher
-                les évènements où j'ai répondu-->
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button ng-click="notMyOwn = !notMyOwn" ng-class="{ 'btn btn-success': !notMyOwn,'btn btn-danger': notMyOwn }">Je suis le créateur</button>
+            </div>
+            <div class="btn-group">
+                <button ng-click="notMine = !notMine" ng-class="{ 'btn btn-success': !notMine,'btn btn-danger': notMine }">Je participe</button>
+            </div>
+            <div class="btn-group">
+                <button ng-click="notOthers = !notOthers" ng-class="{ 'btn btn-success': !notOthers,'btn btn-danger': notOthers }">Les autres</button>
             </div>
         </div>
         <table class="table">
@@ -48,8 +47,8 @@
                     <span ng-show="sortType == 'createurEvent' && sortR" class="fa fa-caret-up"></span>
                 </th>
             </tr>
-            <tr ng-show="!mesEvents || estCreateur(event)" ng-repeat="event in allEvents | orderBy:sortType:sortR | filter:searchQ" ng-click="selectEvent(event)"
-                ng-class="{ 'info': estCreateur(event),'success': estPresent(event),'danger': estAbsent(event) }">
+            <tr ng-show="(!notOthers && !estCreateur(event) && !estPresent(event)) || (estCreateur(event) && !notMyOwn) || (estPresent(event) && !notMine)" ng-repeat="event in allEvents | orderBy:sortType:sortR | filter:searchQ"
+                ng-click="selectEvent(event)" ng-class="{ 'info': estCreateur(event),'success': estPresent(event),'warning': estAbsent(event) }">
                 <td>{{event.nomEvent}}</td>
                 <td>{{event.dateEvent|date}}</td>
                 <td>{{event.lieuEvent}}</td>

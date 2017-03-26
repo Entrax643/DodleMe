@@ -36,11 +36,6 @@ angular
         controller: 'TousLesEvenementsCtrl',
         controllerAs: 'tousLesEvenements'
       })
-      .when('/mesEvents', {
-        templateUrl: 'views/mesEvents.html',
-        controller: 'MesEvents',
-        controllerAs: 'mesEvents'
-      })
       .when('/creerEvent', {
         templateUrl: 'views/creerEvent.html',
         controller: 'CreerEventCtrl',

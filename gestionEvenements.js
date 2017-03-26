@@ -14,7 +14,7 @@ var creer = function (createur, nom, description, date, creneaux, lieu) {
     if (typeof listeEvents[nom] === 'undefined') {
         listeEvents[nom] = new Evenement(createur, nom, description, date, creneaux, lieu);
         Events.push(listeEvents[nom]);
-        console.log('creerEvent' + "\n createur : " + createur + "\n nom: " + nom + "\n description : " + description + "\n date : " + date + "\n creneaux : " + creneaux + "\n lieu : " + lieu);
+        //console.log('creerEvent' + "\n createur : " + createur + "\n nom: " + nom + "\n description : " + description + "\n date : " + date + "\n creneaux : " + creneaux + "\n lieu : " + lieu);
         return true;
     }
     return false;

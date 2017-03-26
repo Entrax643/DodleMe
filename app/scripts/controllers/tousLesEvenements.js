@@ -25,10 +25,8 @@ angular.module('dodleme')
         }
 
         $scope.updateEvent = function () {
-            $scope.info = $scope.selectedEvent;
             NodeService.updateEvent($scope.selectedEvent)
                 .then(function (response) {
-                    $scope.error = response;
                 });
         }
 
@@ -37,5 +35,15 @@ angular.module('dodleme')
                 return true;
             }
             return false;
+        }
+
+        $scope.estPresent = function (event) {
+            var estPresent;
+            event.creneauxEvent.forEach(function (item, index) {
+                if (item.listeUtilisateurs[$scope.$storage.pseudo]) {
+                    estPresent = true;
+                }
+            });
+            return estPresent;
         }
     });
