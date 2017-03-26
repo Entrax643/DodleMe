@@ -71,26 +71,28 @@
                 <textarea type="text" name="descriptionEvent" id="descriptionEvent" class="form-control" ng-model="selectedEvent.descriptionEvent"
                     disabled />
 
-                <label>Créneaux disponibles :</label>
-                <div ng-repeat="creneau in selectedEvent.creneauxEvent" class="radio" ng-show="creneau.selected">
-                    {{creneau.heure}} :
-                    <label><input type="radio" ng-model="creneau.listeUtilisateurs[indexUtilisateur].presence" ng-value="true">Oui</label>
-                    <label><input type="radio" ng-model="creneau.listeUtilisateurs[indexUtilisateur].presence" ng-value="false">Non</label>
-                    <button data-toggle="collapse" data-target="#collapseUtilisateur{{ $index + 1 }}" class="btn btn-default">{{creneau.nbUtilisateur}} Participant(s)</button>
-                    <ul id="collapseUtilisateur{{ $index + 1 }}" class="list-inline collapse">
-                        <li ng-repeat="participant in participants[creneau.heure]">{{participant.Utilisateur}}</li>
-                    </ul>
-                </div>
-                <div class="text-center">
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success">Apply</button>
-                        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-                        />
+                <div ng-show="!selectedEvent.creneauCloturation">
+                    <label>Créneaux disponibles :</label>
+                    <div ng-repeat="creneau in selectedEvent.creneauxEvent" class="radio" ng-show="creneau.selected">
+                        {{creneau.heure}} :
+                        <label><input type="radio" ng-model="creneau.listeUtilisateurs[indexUtilisateur].presence" ng-value="true">Oui</label>
+                        <label><input type="radio" ng-model="creneau.listeUtilisateurs[indexUtilisateur].presence" ng-value="false">Non</label>
+                        <button data-toggle="collapse" data-target="#collapseUtilisateur{{ $index + 1 }}" class="btn btn-default">{{creneau.nbUtilisateur}} Participant(s)</button>
+                        <ul id="collapseUtilisateur{{ $index + 1 }}" class="list-inline collapse">
+                            <li ng-repeat="participant in participants[creneau.heure]">{{participant.Utilisateur}}</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Apply</button>
+                            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                            />
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
-        <div ng-show="selectedEvent && estCreateur(selectedEvent)">
+        <div ng-show="selectedEvent && estCreateur(selectedEvent) && !selectedEvent.creneauCloturation">
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
                     <button ng-click="edit = false" ng-class="{ 'btn btn-success': !edit,'btn btn-danger': edit }">Cloturation</button>
