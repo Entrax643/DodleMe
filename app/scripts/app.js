@@ -38,7 +38,7 @@ angular
       })
       .when('/mesEvents', {
         templateUrl: 'views/mesEvents.html',
-        controller: 'MesEventsCtrl',
+        controller: 'MesEvents',
         controllerAs: 'mesEvents'
       })
       .when('/creerEvent', {
