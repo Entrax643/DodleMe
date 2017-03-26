@@ -30,6 +30,9 @@ angular.module('dodleme')
       descriptionEvent: 'C\'est la fête !',
       dateEvent: '29-03-2017',
       creneauxEvent: [
+        { heure: "00h-2h", selected: false, listeUtilisateurs: {} },
+        { heure: "2h-4h", selected: false, listeUtilisateurs: {} },
+        { heure: "4h-6h", selected: false, listeUtilisateurs: {} },
         { heure: "6h-8h", selected: false, listeUtilisateurs: {} },
         { heure: "8h-10h", selected: false, listeUtilisateurs: {} },
         { heure: "10h-12h", selected: false, listeUtilisateurs: {} },
