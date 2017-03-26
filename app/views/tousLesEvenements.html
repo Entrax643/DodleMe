@@ -71,7 +71,7 @@
                 <textarea type="text" name="descriptionEvent" id="descriptionEvent" class="form-control" ng-model="selectedEvent.descriptionEvent"
                     disabled />
 
-                <div ng-show="!selectedEvent.creneauCloturation">
+                <div ng-show="!selectedEvent.creneauCloturation && $storage.isConnected">
                     <label>Créneaux disponibles :</label>
                     <div ng-repeat="creneau in selectedEvent.creneauxEvent" class="radio" ng-show="creneau.selected">
                         {{creneau.heure}} :
@@ -92,7 +92,7 @@
                 </div>
             </form>
         </div>
-        <div ng-show="selectedEvent && estCreateur(selectedEvent) && !selectedEvent.creneauCloturation">
+        <div ng-show="selectedEvent && estCreateur(selectedEvent) && !selectedEvent.creneauCloturation && $storage.isConnected">
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
                     <button ng-click="edit = false" ng-class="{ 'btn btn-success': !edit,'btn btn-danger': edit }">Cloturation</button>
