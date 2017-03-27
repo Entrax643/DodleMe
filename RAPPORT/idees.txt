@@ -1,0 +1,9 @@
+- modification infos personnelle (mot de passe, nom, prénom, tel, mail, notifications)
+- affichage détaillée des participants
+- évenements privé
+- invitations de personnes à la création de l'event
+- map interactive
+- version hors ligne
+- chat en ligne
+- ajout d'amis
+- cagnotte
