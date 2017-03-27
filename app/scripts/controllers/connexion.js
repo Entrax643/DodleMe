@@ -12,12 +12,10 @@ angular.module('dodleme')
                         if (response.message.data) {
                             $scope.user = response.message.data;
                             if ($scope.password == $scope.user.password) {
-
                                 $localStorage.pseudo = $scope.user.pseudo;
                                 $localStorage.prenom = $scope.user.nom;
                                 $localStorage.nom = $scope.user.nom;
                                 $localStorage.isConnected = true;
-
                                 $scope.error = "";
                                 $scope.info = "Bienvenue " + $scope.user.prenom + " " + $scope.user.nom;
                                 $location.path("/tousLesEvenements");

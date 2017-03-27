@@ -67,30 +67,4 @@ angular.module('dodleme')
         });
       $scope.dataLoading = false;
     };
-
-    $scope.getEvent = function () {
-      $scope.dataLoading = true;
-      NodeService.getEventByNom($scope.event.nomEvent)
-        .then(function (response) {
-          $scope.info = response;
-          if (response.success) {
-            if (response.message.data) {
-              $scope.info = $scope.creneaux;
-              $scope.error = response.message.data.creneauxEvent;
-              $scope.event = response.message.data;
-              //$scope.creneaux = response.message.data.creneauxEvent;
-              //$location.path("#!/tousLesEvenements");
-            } else {
-              $scope.info = "";
-              $scope.error = "Nom d'évènement erroné";
-            }
-            $scope.dataLoading = false;
-          } else {
-            $scope.info = response.data;
-            $scope.error = "Erreur lors de la récupération de l'évènement";
-            $scope.dataLoading = false;
-          }
-        });
-      $scope.dataLoading = false;
-    };
   });

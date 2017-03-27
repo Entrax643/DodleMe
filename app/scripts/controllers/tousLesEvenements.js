@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dodleme')
-    .controller('TousLesEvenementsCtrl', function ($scope, $localStorage, NodeService, mdcDateTimeDialog) {
+    .controller('TousLesEvenementsCtrl', function ($scope, $localStorage, NodeService) {
         init();
         $scope.$storage = $localStorage;
 
@@ -31,7 +31,7 @@ angular.module('dodleme')
 
         /**
          * Sélectionne un évènement
-         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+         * @param {Evenement} event - un évènement. Contient une listeUtilisateurs.
          */
         $scope.selectEvent = function (event) {
             $scope.selectedEvent = event;
@@ -58,7 +58,6 @@ angular.module('dodleme')
                 });
                 item.nbUtilisateur = nbUtilisateur;
             });
-            //$scope.error = $scope.selectedEvent.creneauxEvent;
             NodeService.updateEvent($scope.selectedEvent);
         }
 
@@ -72,7 +71,6 @@ angular.module('dodleme')
             creneau.listeUtilisateurs.forEach(function (item, index) {
                 if (item.presence) {
                     participants.push({ Utilisateur: item.Utilisateur });
-                    //participants += " " + item.Utilisateur;
                 }
             });
             return participants;
@@ -100,9 +98,10 @@ angular.module('dodleme')
             }
             return false;
         }
+
         /**
         * Indique si l'utilisateur actuel est présent dans un des créneaux de event
-         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+         * @param {Evenement} event - un évènement. Contient une listeUtilisateurs.
         */
         $scope.estPresent = function (event) {
             var estPresent = false;
@@ -116,7 +115,7 @@ angular.module('dodleme')
 
         /**
          * Indique si l'utilisateur actuel a été notifié de la fin de l'évènement event
-         * @param {string} event - un évènement. Contient une listeUtilisateurs.
+         * @param {Evenement} event - un évènement. Contient une listeUtilisateurs.
          */
         $scope.wasNotified = function (event) {
             var wasNotified = false;
